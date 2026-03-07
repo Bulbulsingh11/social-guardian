@@ -87,7 +87,8 @@ def analyze():
         threat   = round(float(raw["threat"][i]),          4)
         severe   = round(float(raw["severe_toxicity"][i]), 4)
         obscene  = round(float(raw["obscene"][i]),         4)
-        identity = round(float(raw["identity_attack"][i]), 4)
+        identity_key = "identity_attack" if "identity_attack" in raw else "identity_hate"
+        identity = round(float(raw[identity_key][i]), 4)
 
         # Flag if any threshold crossed
         is_toxic = (
@@ -108,7 +109,7 @@ def analyze():
                 "threat":          threat,
                 "severe_toxicity": severe,
                 "obscene":         obscene,
-                "identity_attack": identity,
+                "identity_hate":   identity,
             }
         })
 

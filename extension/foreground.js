@@ -5,7 +5,7 @@
 const BACKEND = "http://localhost:5000/analyze";
 
 const PLATFORM_SELECTORS = {
-  "instagram.com": "span.x193iq5w, span._aacl",
+  "instagram.com": "div._a9zs span, ul._a9yw li span.x193iq5w",
   "twitter.com":   "div[data-testid='tweetText']",
   "x.com":         "div[data-testid='tweetText']",
   "youtube.com":   "yt-formatted-string#content-text",
