@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Social Guardian",
+  "version": "1.0",
+  "description": "AI-powered cyber harassment detector. Scans comments, scores toxicity, and generates FIR complaint PDFs.",
+
+  "permissions": ["activeTab", "scripting", "storage", "downloads"],
+  "host_permissions": ["http://localhost:5000/*"],
+
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.instagram.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.youtube.com/*",
+        "*://*.facebook.com/*"
+      ],
+      "js": ["foreground.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16":  "logo/logo-16.png",
+      "48":  "logo/logo-48.png",
+      "128": "logo/logo-128.png"
+    }
+  },
+
+  "icons": {
+    "16":  "logo/logo-16.png",
+    "48":  "logo/logo-48.png",
+    "128": "logo/logo-128.png"
+  },
+
+  "options_ui": {
+    "page": "settings/settings.html",
+    "open_in_tab": false
+  }
+}
